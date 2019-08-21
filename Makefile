@@ -8,7 +8,7 @@ build: ## Build container
 	docker build -t hello .
 
 run: ## Run container
-	docker run hello 
+	docker run -p 5000:5000 hello
 
 up: build run ## Build and run container
 

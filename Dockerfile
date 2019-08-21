@@ -1,4 +1,9 @@
 FROM python:3
-COPY hello.py /
-CMD [ "python", "./hello.py" ]
+
+COPY requirements.txt /tmp/
+RUN pip install -r tmp/requirements.txt
+
+COPY app.py .
+
+CMD [ "python", "app.py" ]
 
