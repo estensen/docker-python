@@ -1,4 +1,5 @@
-FROM python:3.7.4-slim-buster
+FROM python:3.7.4-slim-buster AS base
+FROM base AS builder
 
 RUN pip install pipenv
 ENV VIRTUAL_ENV=/opt/venv
@@ -15,5 +16,11 @@ USER appuser
 
 COPY app.py .
 
+
+FROM base
+COPY --from=builder /home/appuser .
+COPY --from=builder /opt/venv /opt/venv
+ENV VIRTUAL_ENV=/opt/venv
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 CMD [ "python", "app.py" ]
 
