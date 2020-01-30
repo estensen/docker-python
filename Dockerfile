@@ -1,4 +1,4 @@
-FROM python:3.7.4-slim-buster AS base
+FROM python:3.8.1-slim-buster AS base
 FROM base AS builder
 
 RUN pip install pipenv
