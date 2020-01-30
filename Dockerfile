@@ -1,4 +1,6 @@
 FROM python:3.8.1-slim-buster AS base
+
+
 FROM base AS builder
 
 RUN pip install pipenv
@@ -17,7 +19,7 @@ WORKDIR /home/appuser
 COPY app.py .
 
 
-FROM base
+FROM base AS runtime
 
 RUN useradd --create-home appuser
 USER appuser
