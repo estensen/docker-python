@@ -5,7 +5,7 @@ help: #Self-documents targets
 
 
 build: ## Build container
-	docker build -t hello .
+	DOCKER_BUILDKIT=1 docker build -t hello .
 
 run: ## Run container
 	docker run -p 5000:5000 hello
